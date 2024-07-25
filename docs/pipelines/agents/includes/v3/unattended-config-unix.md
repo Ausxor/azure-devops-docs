@@ -18,7 +18,8 @@ For example, `VSTS_AGENT_INPUT_PASSWORD` instead of specifying `--password`.
 - `--unattended` - agent setup will not prompt for information, and all settings must be provided on the command line
 - `--url <url>` - URL of the server. For example: https://dev.azure.com/myorganization or http://my-azure-devops-server:8080/tfs
 - `--auth <type>` - authentication type. Valid values are:
-  - `pat` (Personal access token) - PAT is the only scheme that works with Azure DevOps Services.
+  - `pat` (Personal access token)
+  - `sp` (Service principal)
   - `alt` (Basic authentication)
 
 ### Authentication options
@@ -29,6 +30,12 @@ For example, `VSTS_AGENT_INPUT_PASSWORD` instead of specifying `--password`.
 - If you chose `--auth negotiate` or `--auth alt`:
   - `--userName <userName>` - specifies a username
   - `--password <password>` - specifies a password
+- If you chose `--auth sp`
+  - `--clientsecret <clientSecret>` - Microsoft Entra application client secret
+  - `--tenantid <tenantId>` - Microsoft Entra tenant id
+
+> [!NOTE]
+> PAT and Service Principal are the only schemes that work with Azure DevOps Services.
 
 ### Pool and agent names
 - `--pool <pool>` - pool name for the agent to join
